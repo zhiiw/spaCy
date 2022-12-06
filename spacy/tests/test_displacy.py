@@ -6,6 +6,8 @@ from spacy.displacy.render import DependencyRenderer, EntityRenderer
 from spacy.lang.en import English
 from spacy.lang.fa import Persian
 from spacy.tokens import Span, Doc
+import socket
+from ..util import is_port_in_use
 
 
 @pytest.mark.issue(2361)
@@ -363,3 +365,4 @@ def test_displacy_manual_sorted_entities():
 
     html = displacy.render(doc, style="ent", manual=True)
     assert html.find("FIRST") < html.find("SECOND")
+

@@ -100,10 +100,8 @@ def serve(
     """
     from wsgiref import simple_server
 
-    if is_port_in_use(port):
+    while is_port_in_use(port) and port < 65535:
         port += 1
-        while is_port_in_use(port) and port < 65535:
-            port += 1
 
     if is_in_jupyter():
         warnings.warn(Warnings.W011)
